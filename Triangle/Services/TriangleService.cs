@@ -19,6 +19,8 @@
                 return 0;
             }
 
+            ValidateStructure(triangle);
+
             // Go top down from row 1 as 0 will never change
             for (int row = 1; row < triangle.Length; row++)
             {
@@ -71,6 +73,17 @@
                 triangle[i] = Array.ConvertAll(numbers, int.Parse);
             }
             return triangle;
+        }
+
+        private void ValidateStructure(int[][] triangle)
+        {
+            for(int i = 0; i < triangle.Length; i++)
+            {
+                if (triangle[i].Length != i + 1)
+                {
+                    throw new ArgumentException("Invalid triangle structure");
+                }
+            }
         }
     }
 }
